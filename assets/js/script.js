@@ -16,8 +16,9 @@ $(document).ready(function () {
 
     $("#btn").click(function () {
         var txt = $("#form1").val();
-        console.log(txt);
-
+        //console.log(txt);
+        cities.push(txt);
+        console.log(cities);
     })
 
 
@@ -51,3 +52,24 @@ $(document).ready(function () {
 
 
 })
+
+// will use cities array to hold cities user searches for
+//  will write to local storage ... maybe not necessary
+// will have to add blocks or cards to index html to hold information
+// will use specific class or id tags to write that information
+//  once i figure out how to call the information from the 
+// open weather api
+
+
+// as for the uv indix part of this assignment i am going to 
+// leave that for last, seems the hardest part based on reading the
+//documentation for the api -- the uv info will no longer work after
+//April 2021 however the alternative they give requires calls by
+//lat and long which seems like a whole mess of trouble
+// to get that information i would literally have to 
+// keep data on the lat and long of every city in the world for it
+// to work ??  
+
+// need to get page working and api working just calling up
+// regular five day forcasts for multiple cities first then
+// will worry about what to do with the uv issue
