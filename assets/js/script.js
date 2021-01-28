@@ -3,6 +3,7 @@
 var myApiKey = "bfe778d8ee4fe1d07c2fd96feb41c947";
 ////make an array for holding cities previously searched 
 var cities = [];
+var queryString = ""
 /// use moment js to display todays date at top
 var momdate = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
@@ -13,7 +14,7 @@ thetime.text(momdate);
 $(document).ready(function () {
 
 
-
+    /// store cities searched to an array --  problem is it is storing blanks also
     $("#btn").click(function () {
         var txt = $("#form1").val();
         //console.log(txt);
@@ -21,10 +22,20 @@ $(document).ready(function () {
         console.log(cities);
     })
 
+    queryString = "https://www.api.openweathermap.org/data/2.5/weather?q=" + "txt" + "&appid=" + myApiKey
 
+    alert(queryString)
+    function fetchData(queryString) {
+        fetch(queryString)
+            .then(function (resp) { return resp.json() }) // Convert data to json
+            .then(function (data) {
+                console.log(data);
+            })
+            .catch(function () {
+                // catch any errors
+            });
 
-
-
+    }
 
 
 
