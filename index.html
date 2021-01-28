@@ -19,36 +19,42 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">Weather Dashboard</h1>
-        <p class="lead"></p>
-        <hr class="my-4">
-        <p id="currentDay" class="lead"></p>
-        <div class="form-outline">
-            <input type="search" id="form1" class="form-control" />
-            <label class="form-label" for="form1">Search</label>
+    <h1 class="display-4">Weather Dashboard</h1>
+    <p id="currentDay" class="lead"></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="jumbotron">
+
+                    <p class="lead"></p>
+                    <hr class="my-4">
+
+                    <div class="form-outline">
+                        <input type="search" placeholder="Type city name here" id="form1" class="form-control" />
+                        <label class="form-label" for="form1">Search</label>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
         </div>
-        <button type="button" class="btn btn-primary" id="btn">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
 
+        <script src="./lib/moment/moment.min.js"></script>
+        <script src="./assets/js/script.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-    <script src="./lib/moment/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 
 </html>
