@@ -13,7 +13,8 @@ momdate = (momdate.format("MMMM Do YYYY"));
 
 var thetime = $("#currentDay");
 thetime.text(momdate);
-
+$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
+/// easily see where they are will remove later 
 $(document).ready(function () {
 
 
@@ -22,7 +23,23 @@ $(document).ready(function () {
         var txt = $("#form1").val();
         //console.log(txt);
         cities.push(txt);
+        numCities = cities.length
+        localStorage.setItem(numCities, JSON.stringify(txt));
         console.log(cities);
+        var storedData = JSON.parse(window.localStorage.getItem(cities.length))
+        $("#searchHistory").val(storedData);
+        ///searches are being saved to local storage i can see them in the window -- local storage when i check the console
+        //next step is to append or get them displayed on the screen 
+
+
+
+
+
+
+
+
+
+
 
         // const lat_url = `https://api.opencagedata.com/geocode/v1/json?q=${txt}&key=${geoAPiKey}`
 
@@ -95,3 +112,12 @@ $(document).ready(function () {
 // need to get page working and api working just calling up
 // regular five day forcasts for multiple cities first then
 // will worry about what to do with the uv issue
+
+
+
+
+
+
+
+
+
