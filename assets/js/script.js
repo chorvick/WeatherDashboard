@@ -1,7 +1,8 @@
 ///// this is where the action will take place javascript will be written here
 //// open weather api key is bfe778d8ee4fe1d07c2fd96feb41c947
 var myApiKey = "bfe778d8ee4fe1d07c2fd96feb41c947";
-var geoAPiKey = "0e8077c387ca4121836b4a8d159a4cb0"
+
+///var geoAPiKey = "0e8077c387ca4121836b4a8d159a4cb0"
 ////make an array for holding cities previously searched 
 var cities = [];
 var queryString = ""
@@ -23,55 +24,57 @@ $(document).ready(function () {
         cities.push(txt);
         console.log(cities);
 
-        const lat_url = `https://api.opencagedata.com/geocode/v1/json?q=${txt}&key=${geoAPiKey}`
+        // const lat_url = `https://api.opencagedata.com/geocode/v1/json?q=${txt}&key=${geoAPiKey}`
 
-        $.get(lat_url, (data) => {
-            console.log(`Here is the Lat Long:}`)
-            console.log(data)
+        // $.get(lat_url, (data) => {
+        //     console.log(`Here is the Lat Long:}`)
+        //     console.log(data)
 
-            queryString = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.results[0].geometry.lat}&lon=${data.results[0].geometry.lng}&appid=${myApiKey}`
+        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&appid=bfe778d8ee4fe1d07c2fd96feb41c947";
+        //  api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+        // https://api.openweathermap.org/data/2.5/weather?q=chicagoappid=bfe778d8ee4fe1d07c2fd96feb41c947
 
-            alert(queryString)
-            function fetchData(queryString) {
-                fetch(queryString)
-                    .then(function (resp) { return resp.json() }) // Convert data to json
-                    .then(function (data) {
-                        console.log(data);
-                    })
-                    .catch(function () {
-                        // catch any errors
-                    });
-                console.log(fetchData);
-            }
-            fetchData(queryString)
-        })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        alert(queryString)
+        function fetchData(queryString) {
+            fetch(queryString)
+                .then(function (resp) { return resp.json() }) // Convert data to json
+                .then(function (data) {
+                    console.log(data);
+                })
+                .catch(function () {
+                    // catch any errors
+                });
+            console.log(fetchData);
+        }
+        fetchData(queryString)
     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
+
 // will use cities array to hold cities user searches for
 //  will write to local storage ... maybe not necessary
 // will have to add blocks or cards to index html to hold information
