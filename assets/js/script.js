@@ -4,6 +4,7 @@ var myApiKey = "bfe778d8ee4fe1d07c2fd96feb41c947";
 ////make an array for holding cities previously searched 
 var cities = [];
 var queryString = ""
+var data
 /// use moment js to display todays date at top
 var momdate = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
@@ -20,23 +21,23 @@ $(document).ready(function () {
         //console.log(txt);
         cities.push(txt);
         console.log(cities);
+
+
+        queryString = "https://.api.openweathermap.org/data/2.5/weather?q=" + txt + "&appid=" + myApiKey;
+
+        alert(queryString)
+        function fetchData(queryString) {
+            fetch(queryString)
+                .then(function (resp) { return resp.json() }) // Convert data to json
+                .then(function (data) {
+                    console.log(data);
+                })
+                .catch(function () {
+                    // catch any errors
+                });
+            console.log(fetchData);
+        }
     })
-
-    queryString = "https://www.api.openweathermap.org/data/2.5/weather?q=" + "txt" + "&appid=" + myApiKey
-
-    alert(queryString)
-    function fetchData(queryString) {
-        fetch(queryString)
-            .then(function (resp) { return resp.json() }) // Convert data to json
-            .then(function (data) {
-                console.log(data);
-            })
-            .catch(function () {
-                // catch any errors
-            });
-
-    }
-
 
 
 
