@@ -37,46 +37,31 @@ $(document).ready(function () {
         var makeList = $("<p></p>").text(storedData);
 
         $("ul").append(makeList);
-        // $("#searchHistory").val(storedData);
+        $("#searchHistory").val(storedData);
 
 
+        console.log(data)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // const lat_url = `https://api.opencagedata.com/geocode/v1/json?q=${txt}&key=${geoAPiKey}`
-
-        // $.get(lat_url, (data) => {
-        //     console.log(`Here is the Lat Long:}`)
-        //     console.log(data)
-
-        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&appid=" + myApiKey;
-        //  api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
+        // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
         // https://api.openweathermap.org/data/2.5/weather?q=chicagoappid=bfe778d8ee4fe1d07c2fd96feb41c947
+        //https://api.openweathermap.org/data/2.5/weather?q=Torontounits=imperial&appid=bfe778d8ee4fe1d07c2fd96feb41c947
 
-        //alert(queryString)
-        //function fetchData(queryString) {
-        // fetch(queryString)
-        // .then(function (resp) { return resp.json() }) // Convert data to json
-        // .then(function (data) {
-        // console.log(data);
-        // })
-        // .catch(function () {
 
-        // });
-        // console.log(fetchData);
-        // }
-        // fetchData(queryString)
+        alert(queryString)
+        function fetchData(queryString) {
+            fetch(queryString)
+                .then(function (resp) { return resp.json() }) // Convert data to json
+                .then(function (data) {
+                    console.log(data);
+                })
+                .catch(function () {
+
+                });
+            console.log(fetchData);
+        }
+        fetchData(queryString)
+
     })
 
 
