@@ -16,7 +16,7 @@ momdate = (momdate.format("MMMM Do YYYY"));
 
 var thetime = $("#currentDay");
 thetime.text(momdate);
-$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
+//$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
 /// easily see where they are will remove later 
 $(document).ready(function () {
 
@@ -41,8 +41,8 @@ $(document).ready(function () {
 
 
 
-        ///searches are being saved to local storage i can see them in the window -- local storage when i check the console
-        //next step is to append or get them displayed on the screen 
+
+
 
 
 
