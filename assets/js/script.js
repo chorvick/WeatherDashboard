@@ -2,11 +2,14 @@
 //// open weather api key is bfe778d8ee4fe1d07c2fd96feb41c947
 var myApiKey = "bfe778d8ee4fe1d07c2fd96feb41c947";
 
-///var geoAPiKey = "0e8077c387ca4121836b4a8d159a4cb0"
+
 ////make an array for holding cities previously searched 
 var cities = [];
 var queryString = ""
 var data
+var makeList
+
+
 /// use moment js to display todays date at top
 var momdate = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
@@ -26,8 +29,18 @@ $(document).ready(function () {
         numCities = cities.length
         localStorage.setItem(numCities, JSON.stringify(txt));
         console.log(cities);
+
+
+
         var storedData = JSON.parse(window.localStorage.getItem(cities.length))
-        $("#searchHistory").val(storedData);
+        console.log(storedData);
+        var makeList = $("<p></p>").text(storedData);
+
+        $("ul").append(makeList);
+        // $("#searchHistory").val(storedData);
+
+
+
         ///searches are being saved to local storage i can see them in the window -- local storage when i check the console
         //next step is to append or get them displayed on the screen 
 
@@ -47,23 +60,23 @@ $(document).ready(function () {
         //     console.log(`Here is the Lat Long:}`)
         //     console.log(data)
 
-        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&appid=bfe778d8ee4fe1d07c2fd96feb41c947";
+        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&appid=" + myApiKey;
         //  api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
         // https://api.openweathermap.org/data/2.5/weather?q=chicagoappid=bfe778d8ee4fe1d07c2fd96feb41c947
 
-        alert(queryString)
-        function fetchData(queryString) {
-            fetch(queryString)
-                .then(function (resp) { return resp.json() }) // Convert data to json
-                .then(function (data) {
-                    console.log(data);
-                })
-                .catch(function () {
-                    // catch any errors
-                });
-            console.log(fetchData);
-        }
-        fetchData(queryString)
+        //alert(queryString)
+        //function fetchData(queryString) {
+        // fetch(queryString)
+        // .then(function (resp) { return resp.json() }) // Convert data to json
+        // .then(function (data) {
+        // console.log(data);
+        // })
+        // .catch(function () {
+
+        // });
+        // console.log(fetchData);
+        // }
+        // fetchData(queryString)
     })
 
 
