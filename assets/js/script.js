@@ -14,8 +14,9 @@ var makeList
 var momdate = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
 
-var thetime = $("#currentDay");
-thetime.text(momdate);
+var thetime = $("#currentDay").css("font-weight", "400");
+
+thetime.text(momdate)
 //$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
 /// easily see where they are will remove later 
 $(document).ready(function () {
@@ -88,12 +89,22 @@ $(document).ready(function () {
             }).then(function (theAnswer2) {
                 console.log("second api info is " + theAnswer2);
                 var uvi = theAnswer2.current.uvi;
+                //uvi = 9;  used to test uvi color 
                 console.log(uvi);
                 var test = theAnswer2.current.sunrise;
                 console.log(test);
                 console.log(theAnswer2);
                 $("#currentUv").text(uvi);
+                if (uvi <= 2) {
+                    $("#currentUv").css("background-color", "lightgreen");
+                }
 
+                if (uvi > 2 && uvi <= 5) {
+                    $("#currentUv").css("background-color", "orange");
+                }
+                if (uvi > 5) {
+                    $("#currentUv").css("background-color", "red");
+                }
 
 
 
