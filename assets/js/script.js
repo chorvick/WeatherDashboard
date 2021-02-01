@@ -56,11 +56,23 @@ $(document).ready(function () {
             var city = theAnser.name;
             console.log(city);
             var temperature = theAnser.main.temp;
-            console.log("in " + city + "it is " + temperature + " degrees");
+            temperature = Math.floor(temperature);
+            console.log("in " + city + " it is " + temperature + " degrees");
             var { humidity } = theAnser.main;
             console.log({ humidity });
 
         });
+        ///////////now that we can get the data we need in a format we understand from the
+        ////////weather api, i can refine this code to use jquerry and write the necessary information
+        ////to the page --- with fetch i was unable to access the data, and unable to 
+        /// find resources that would let me acces it, also kept getting many errors
+        /// in the console trying to just pull the information up
+        /// i am guessing that the open weather api just works better with ajax 
+        /// even though our instructor stated this is not the best way to call
+        //info from an api and fetch was the method used in class examples 
+        /// i wasted almost two days with no progress on this project
+        // now i can see it moving along and getting finished 
+
 
 
 
