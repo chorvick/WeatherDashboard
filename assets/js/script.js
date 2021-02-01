@@ -40,27 +40,45 @@ $(document).ready(function () {
         $("#searchHistory").val(storedData);
 
 
-        console.log(data)
+
 
         queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
         // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
         // https://api.openweathermap.org/data/2.5/weather?q=chicagoappid=bfe778d8ee4fe1d07c2fd96feb41c947
         //https://api.openweathermap.org/data/2.5/weather?q=Torontounits=imperial&appid=bfe778d8ee4fe1d07c2fd96feb41c947
 
+        $.ajax({
+            url: queryString,
+            method: "get",
 
-        alert(queryString)
-        function fetchData(queryString) {
-            fetch(queryString)
-                .then(function (resp) { return resp.json() }) // Convert data to json
-                .then(function (data) {
-                    console.log(data);
-                })
-                .catch(function () {
+        }).then(function (theAnser) {
+            console.log(data);
+            var city = theAnser.name;
+            console.log(city);
+            var temperature = theAnser.main.temp;
+            console.log("in " + city + "it is " + temperature + " degrees");
+            var { humidity } = theAnser.main;
+            console.log({ humidity });
 
-                });
-            console.log(fetchData);
-        }
-        fetchData(queryString)
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     })
 
