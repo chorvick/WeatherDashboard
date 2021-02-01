@@ -64,9 +64,10 @@ $(document).ready(function () {
             console.log(humidity);
             var wind = theAnswer.wind.speed;
             wind = Math.floor(wind);
-            var lat = { lat };
-            var lon = { lon };
-
+            var lat = theAnswer.coord.lat;
+            var lon = theAnswer.coord.lon;
+            console.log(lat);
+            console.log(lon);
 
             $("#currentTemp").text(temperature + " F");
             $("#currentCity").text(city);
@@ -74,53 +75,42 @@ $(document).ready(function () {
             $("#currentHumid").text(humidity + " %");
             ////using placeholder we need to call different api to get uv info
             //// next need to figure out how to get icons /colors on the main page
-            $("#currentUv").text("placeholder");
+            ///$("#currentUv").text("placeholder");
 
             // format for ONE CALL WEATHER API CAN GET 5 DAY AND UV
-            /// https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
-            queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&apiid=" + myApiKey;
 
 
+            queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + myApiKey;
+
+            ///alert(queryString2);
 
 
-
-
-
-
-
-
-        });
-
-
-
-
-
-
+            $.ajax({
+                url: queryString2,
+                method: "get",
+            }).then(function (theAnswer2) {
+                console.log("second api info is " + theAnswer2);
+                var uvi = theAnswer2.current.uvi;
+                console.log(uvi);
+                var test = theAnswer2.current.sunrise;
+                console.log(test);
+                console.log(theAnswer2);
+                $("#currentUv").text(uvi);
 
 
 
 
+            });
 
 
+            //// have second api call working and can get and manipulate
+            //// data
 
-
-
-
-
-
-
-
-        ///////////now that we can get the data we need in a format we understand from the
-        ////////weather api, i can refine this code to use jquerry and write the necessary information
-        ////to the page --- with fetch i was unable to access the data, and unable to 
-        /// find resources that would let me acces it, also kept getting many errors
-        /// in the console trying to just pull the information up
-        /// i am guessing that the open weather api just works better with ajax 
-        /// even though our instructor stated this is not the best way to call
-        //info from an api and fetch was the method used in class examples 
-        /// i wasted almost two days with no progress on this project
-        // now i can see it moving along and getting finished 
+            /// lots of work to do to get 5 day forcast stored and
+            // displayed, also will need to use jquerry to
+            //// change color need cities with high uvi to 
+            //// test or can just change value in code to 
+            /// fake values,..... finally some progress
 
 
 
@@ -141,34 +131,21 @@ $(document).ready(function () {
 
 
 
+            ///////////now that we can get the data we need in a format we understand from the
+            ////////weather api, i can refine this code to use jquerry and write the necessary information
+            ////to the page --- with fetch i was unable to access the data, and unable to 
+            /// find resources that would let me acces it, also kept getting many errors
+            /// in the console trying to just pull the information up
+            /// i am guessing that the open weather api just works better with ajax 
+            /// even though our instructor stated this is not the best way to call
+            //info from an api and fetch was the method used in class examples 
+            /// i wasted almost two days with no progress on this project
+            // now i can see it moving along and getting finished 
+
+
+        })
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
-
 // will use cities array to hold cities user searches for
 //  will write to local storage ... maybe not necessary
 // will have to add blocks or cards to index html to hold information
