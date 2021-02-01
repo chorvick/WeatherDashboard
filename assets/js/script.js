@@ -69,7 +69,7 @@ $(document).ready(function () {
             console.log(lon);
 
             $("#currentTemp").text(temperature + " F");
-            $("#currentCity").text(city);
+            $("#currentCity").text(city + " (" + momdate + ")");
             $("#currentWind").text(wind + " MPH");
             $("#currentHumid").text(humidity + " %");
 
