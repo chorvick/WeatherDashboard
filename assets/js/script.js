@@ -70,12 +70,14 @@ $(document).ready(function () {
 
             $("#currentTemp").text(temperature + " F");
             $("#currentCity").text(city + " (" + momdate + ")");
+            $("#currentCity").append("<img src='https://openweathermap.org/img/w/" + theAnswer.weather[0].icon + ".png' alt='" + theAnswer.weather[0].main + "' />")
             $("#currentWind").text(wind + " MPH");
-            $("#currentHumid").text(humidity + " %");
+            $("#currentHumid").text(humidity + "%");
 
 
 
             // format for ONE CALL WEATHER API CAN GET 5 DAY AND UV
+            /// used this website for value/color of uv https://www.epa.gov/sunsafety/uv-index-scale-0
 
 
             queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + myApiKey;
