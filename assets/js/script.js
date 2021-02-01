@@ -51,17 +51,50 @@ $(document).ready(function () {
             url: queryString,
             method: "get",
 
-        }).then(function (theAnser) {
-            console.log(data);
-            var city = theAnser.name;
+        }).then(function (theAnswer) {
+            console.log(theAnswer);
+            var city = theAnswer.name;
             console.log(city);
-            var temperature = theAnser.main.temp;
+            var temperature = theAnswer.main.temp;
             temperature = Math.floor(temperature);
             console.log("in " + city + " it is " + temperature + " degrees");
-            var { humidity } = theAnser.main;
-            console.log({ humidity });
+            var humidity = theAnswer.main.humidity;
+            console.log(humidity);
+            var wind = theAnswer.wind.speed;
+
+
+
+            $("#currentTemp").text(temperature);
+            $("#currentCity").text(city);
+            $("#currentWind").text(wind);
+            $("#currentHumid").text(humidity);
+            ////using placeholder we need to call different api to get uv info
+            //// next need to figure out how to get icons /colors on the main page
+            $("#currentUv").text("placeholder");
+
+
 
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ///////////now that we can get the data we need in a format we understand from the
         ////////weather api, i can refine this code to use jquerry and write the necessary information
         ////to the page --- with fetch i was unable to access the data, and unable to 
