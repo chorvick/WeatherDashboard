@@ -43,6 +43,8 @@ $(document).ready(function () {
 
 
         queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
+
+
         // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
         // https://api.openweathermap.org/data/2.5/weather?q=chicagoappid=bfe778d8ee4fe1d07c2fd96feb41c947
         //https://api.openweathermap.org/data/2.5/weather?q=Torontounits=imperial&appid=bfe778d8ee4fe1d07c2fd96feb41c947
@@ -61,16 +63,30 @@ $(document).ready(function () {
             var humidity = theAnswer.main.humidity;
             console.log(humidity);
             var wind = theAnswer.wind.speed;
+            wind = Math.floor(wind);
+            var lat = { lat };
+            var lon = { lon };
 
 
-
-            $("#currentTemp").text(temperature);
+            $("#currentTemp").text(temperature + " F");
             $("#currentCity").text(city);
-            $("#currentWind").text(wind);
-            $("#currentHumid").text(humidity);
+            $("#currentWind").text(wind + " MPH");
+            $("#currentHumid").text(humidity + " %");
             ////using placeholder we need to call different api to get uv info
             //// next need to figure out how to get icons /colors on the main page
             $("#currentUv").text("placeholder");
+
+            // format for ONE CALL WEATHER API CAN GET 5 DAY AND UV
+            /// https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
+            queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&apiid=" + myApiKey;
+
+
+
+
+
+
+
 
 
 
