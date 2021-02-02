@@ -150,11 +150,11 @@ $(document).ready(function () {
                     console.log(i);
                     console.log(fiveDayh[i]);
                     i++;
-                    $("#humid1").text(fiveDayh[0]) + "%";
-                    $("#humid2").text(fiveDayh[1]) + "%";
-                    $("#humid3").text(fiveDayh[2]) + "%";
-                    $("#humid4").text(fiveDayh[3]) + "%";
-                    $("#humid5").text(fiveDayh[4]) + "%";
+                    $("#humid1").text(fiveDayh[0] + "%");
+                    $("#humid2").text(fiveDayh[1] + "%");
+                    $("#humid3").text(fiveDayh[2] + "%");
+                    $("#humid4").text(fiveDayh[3] + "%");
+                    $("#humid5").text(fiveDayh[4] + "%");
                 }
 
                 //get five day temp rounded down using daytime temperature 
@@ -165,6 +165,11 @@ $(document).ready(function () {
                     console.log(j);
                     console.log(fiveDayt[j]);
                     j++;
+                    $("#temp1").text(fiveDayt[0] + " F");
+                    $("#temp2").text(fiveDayt[1] + " F");
+                    $("#temp3").text(fiveDayt[2] + "F");
+                    $("#temp4").text(fiveDayt[3] + " F");
+                    $("#temp5").text(fiveDayt[4] + " F");
                 }
             });
 
