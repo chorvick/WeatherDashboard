@@ -80,7 +80,7 @@ $(document).ready(function () {
             /// used this website for value/color of uv https://www.epa.gov/sunsafety/uv-index-scale-0
 
 
-            queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + myApiKey;
+            queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=hourly&appid=" + myApiKey;
 
             ///alert(queryString2);
 
@@ -107,6 +107,40 @@ $(document).ready(function () {
                 if (uvi > 5) {
                     $("#currentUv").css("background-color", "red");
                 }
+
+                var i = 0;
+                var fiveDayh = ["1", "2", "3", "4", "5"];
+                while (i < 5) {
+                    fiveDayh[i] = theAnswer2.daily[i].humidity;
+                    console.log(i);
+                    console.log(fiveDayh[i]);
+                    i++;
+                }
+
+
+
+
+                // var fiveDayh = ["1", "2", "3", "4", "5"];
+
+                // fiveDayh[i] = i;
+                // console.log(i);
+                // i++;
+                //  fiveDay[i] = theAnswer2.daily[i].humidity;
+                //console.log(fiveDayh[1]);
+                //console.log(fiveDayh[3]);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
