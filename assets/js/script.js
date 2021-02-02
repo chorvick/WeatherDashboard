@@ -8,6 +8,8 @@ var cities = [];
 var queryString = ""
 var data
 var makeList
+var fiveDayh = ["1", "2", "3", "4", "5"];
+var fiveDayt = ["1", "2", "3", "4", "5"];
 
 
 /// use moment js to display todays date at top also defined next five days to print to cards 
@@ -21,7 +23,7 @@ var momdate5 = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
 
 
-
+/// using moment for dates for 5 day forcast need it to display properly 
 
 momdate1 = moment().add(1, 'days').format("MMMM Do YYYY");
 
@@ -50,8 +52,7 @@ thetime3.text(momdate3);
 thetime4.text(momdate4);
 thetime5.text(momdate5);
 
-//$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
-/// easily see where they are will remove later 
+
 $(document).ready(function () {
 
 
@@ -78,7 +79,8 @@ $(document).ready(function () {
 
         queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
 
-
+        ///// note theAnswer1 is first api call theAnswer2 is second api call first api call gets weather by city name and information
+        ///// second api call gets uv index for selected city and five day forcast 
 
 
         $.ajax({
@@ -141,106 +143,44 @@ $(document).ready(function () {
                     $("#currentUv").css("background-color", "red");
                 }
                 //get humidity for five day forcast -- also need to start at 1, o would be today
-                var i = 1;
-                var fiveDayh = ["1", "2", "3", "4", "5"];
-                while (i < 6) {
+                var i = 0;
+
+                while (i < 5) {
                     fiveDayh[i] = theAnswer2.daily[i].humidity;
                     console.log(i);
                     console.log(fiveDayh[i]);
                     i++;
+                    $("#humid1").text(fiveDayh[0]) + "%";
+                    $("#humid2").text(fiveDayh[1]) + "%";
+                    $("#humid3").text(fiveDayh[2]) + "%";
+                    $("#humid4").text(fiveDayh[3]) + "%";
+                    $("#humid5").text(fiveDayh[4]) + "%";
                 }
 
                 //get five day temp rounded down using daytime temperature 
-                var j = 1;
-                var fiveDayt = ["1", "2", "3", "4", "5"];
-                while (j < 6) {
+                var j = 0;
+
+                while (j < 5) {
                     fiveDayt[j] = Math.floor(theAnswer2.daily[j].temp.day);
                     console.log(j);
                     console.log(fiveDayt[j]);
                     j++;
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             });
 
 
-            //// have second api call working and can get and manipulate
-            //// data
-
-            /// lots of work to do to get 5 day forcast stored and
-            // displayed, also will need to use jquerry to
-            //// change color need cities with high uvi to 
-            //// test or can just change value in code to 
-            /// fake values,..... finally some progress
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ///////////now that we can get the data we need in a format we understand from the
-            ////////weather api, i can refine this code to use jquerry and write the necessary information
-            ////to the page --- with fetch i was unable to access the data, and unable to 
-            /// find resources that would let me acces it, also kept getting many errors
-            /// in the console trying to just pull the information up
-            /// i am guessing that the open weather api just works better with ajax 
-            /// even though our instructor stated this is not the best way to call
-            //info from an api and fetch was the method used in class examples 
-            /// i wasted almost two days with no progress on this project
-            // now i can see it moving along and getting finished 
 
 
         })
     })
+
+
+
+
+
+
 })
-// will use cities array to hold cities user searches for
-//  will write to local storage ... maybe not necessary
-// will have to add blocks or cards to index html to hold information
-// will use specific class or id tags to write that information
-//  once i figure out how to call the information from the 
-// open weather api
 
-
-// as for the uv indix part of this assignment i am going to 
-// leave that for last, seems the hardest part based on reading the
-//documentation for the api -- the uv info will no longer work after
-//April 2021 however the alternative they give requires calls by
-//lat and long which seems like a whole mess of trouble
-// to get that information i would literally have to 
-// keep data on the lat and long of every city in the world for it
-// to work ??  
-
-// need to get page working and api working just calling up
-// regular five day forcasts for multiple cities first then
-// will worry about what to do with the uv issue
 
 
 
