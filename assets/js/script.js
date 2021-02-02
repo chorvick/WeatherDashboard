@@ -10,13 +10,46 @@ var data
 var makeList
 
 
-/// use moment js to display todays date at top
+/// use moment js to display todays date at top also defined next five days to print to cards 
 var momdate = moment();
+var momdate1 = moment();
+var momdate2 = moment();
+var momdate3 = moment();
+var momdate4 = moment();
+var momdate5 = moment();
+
 momdate = (momdate.format("MMMM Do YYYY"));
+
+
+
+
+momdate1 = moment().add(1, 'days').format("MMMM Do YYYY");
+
+momdate2 = moment().add(2, 'days').format("MMMM Do YYYY");
+
+momdate3 = moment().add(3, 'days').format("MMMM Do YYYY");
+
+momdate4 = moment().add(4, 'days').format("MMMM Do YYYY");
+
+momdate5 = moment().add(5, 'days').format("MMMM Do YYYY");
+
 
 var thetime = $("#currentDay").css("font-weight", "400");
 
 thetime.text(momdate)
+////adding date to cards for five day forcast 
+var thetime1 = $("#day1").css("font-weight", "400");
+var thetime2 = $("#day2").css("font-weight", "400");
+var thetime3 = $("#day3").css("font-weight", "400");
+var thetime4 = $("#day4").css("font-weight", "400");
+var thetime5 = $("#day5").css("font-weight", "400");
+
+thetime1.text(momdate1);
+thetime2.text(momdate2);
+thetime3.text(momdate3);
+thetime4.text(momdate4);
+thetime5.text(momdate5);
+
 //$("div").css("border", "2px solid black"); /// putting border around my divs so i can 
 /// easily see where they are will remove later 
 $(document).ready(function () {
