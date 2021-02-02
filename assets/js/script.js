@@ -107,27 +107,25 @@ $(document).ready(function () {
                 if (uvi > 5) {
                     $("#currentUv").css("background-color", "red");
                 }
-
-                var i = 0;
+                //get humidity for five day forcast -- also need to start at 1, o would be today
+                var i = 1;
                 var fiveDayh = ["1", "2", "3", "4", "5"];
-                while (i < 5) {
+                while (i < 6) {
                     fiveDayh[i] = theAnswer2.daily[i].humidity;
                     console.log(i);
                     console.log(fiveDayh[i]);
                     i++;
                 }
 
-
-
-
-                // var fiveDayh = ["1", "2", "3", "4", "5"];
-
-                // fiveDayh[i] = i;
-                // console.log(i);
-                // i++;
-                //  fiveDay[i] = theAnswer2.daily[i].humidity;
-                //console.log(fiveDayh[1]);
-                //console.log(fiveDayh[3]);
+                //get five day temp rounded down using daytime temperature 
+                var j = 1;
+                var fiveDayt = ["1", "2", "3", "4", "5"];
+                while (j < 6) {
+                    fiveDayt[j] = Math.floor(theAnswer2.daily[j].temp.day);
+                    console.log(j);
+                    console.log(fiveDayt[j]);
+                    j++;
+                }
 
 
 
