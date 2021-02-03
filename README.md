@@ -1,4 +1,4 @@
-#WeatherDashboard
+# WeatherDashboard
 
 This weather dashboard allows you to search the current weather conditions and five day forcast for any city you like.
 This application was written using the bootstrap framework. Other resources used were javascript and Jquery.
