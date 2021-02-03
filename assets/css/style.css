@@ -1,4 +1,7 @@
-/*  this will be our style sheet */
+/*  this will be our style sheet--- most style changes were done dynamically in js file however i did center the current date
+change the background on the top to light grey and make the background of each card light blue as provided in the 
+example for the assignment , i felt the light blue with black print was easier to read and on my eyes than
+white print on dark blue!!!  */
 .display-4 {
   text-align: center;
   background-color: lightgray;
@@ -6,4 +9,8 @@
 
 #currentDay {
   text-align: center;
+}
+
+.card {
+  background-color: lightblue;
 }

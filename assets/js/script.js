@@ -12,7 +12,7 @@ var fiveDayh = ["1", "2", "3", "4", "5"];
 var fiveDayt = ["1", "2", "3", "4", "5"];
 
 
-/// use moment js to display todays date at top also defined next five days to print to cards 
+/// use moment js to display todays date at top also defined next five days to print to cards for five day forcast
 var momdate = moment();
 var momdate1 = moment();
 var momdate2 = moment();
@@ -23,7 +23,8 @@ var momdate5 = moment();
 momdate = (momdate.format("MMMM Do YYYY"));
 
 
-/// using moment for dates for 5 day forcast need it to display properly 
+/// using moment for dates for 5 day forcast need it to display properly to each card not showing utc tmie ect... 
+/// mamdate1 is one day after today momdate2 is two days after today ect.... 
 
 momdate1 = moment().add(1, 'days').format("MMMM Do YYYY");
 
@@ -56,7 +57,8 @@ thetime5.text(momdate5);
 $(document).ready(function () {
 
 
-    /// store cities searched to an array --  problem is it is storing blanks also
+    /// store cities searched by the user to an array --use push to make list in order--   a problem is it is storing blanks also - 
+    /// still need to build buttons for each city stored to local storage --- also want to explore getting rid of upper case letters
     $("#btn").click(function () {
         var txt = $("#form1").val();
 
@@ -79,14 +81,17 @@ $(document).ready(function () {
 
         $("ul").append(makeList);
         $("#searchHistory").val(storedData);
-
-
+        // to do next make buttons for stored cities 
+        //$('<button/>').text(storedData);
 
 
         queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
 
         ///// note theAnswer1 is first api call theAnswer2 is second api call first api call gets weather by city name and information
-        ///// second api call gets uv index for selected city and five day forcast 
+        ///// second api call gets uv index for selected city and five day forcast --
+        //// current conditions for each city requested are stored including latitude and long. while these
+        // are not displayed they are important since  we use the values to call the second api
+        //// the second api has the uv index and also the five day forcast 
 
 
         $.ajax({
@@ -94,21 +99,21 @@ $(document).ready(function () {
             method: "get",
 
         }).then(function (theAnswer) {
-            console.log(theAnswer);
+
             var city = theAnswer.name;
-            console.log(city);
+
             var temperature = theAnswer.main.temp;
             temperature = Math.floor(temperature);
-            console.log("in " + city + " it is " + temperature + " degrees");
+            //console.log("in " + city + " it is " + temperature + " degrees");
             var humidity = theAnswer.main.humidity;
-            console.log(humidity);
+            // console.log(humidity);
             var wind = theAnswer.wind.speed;
             wind = Math.floor(wind);
             var lat = theAnswer.coord.lat;
             var lon = theAnswer.coord.lon;
-            console.log(lat);
-            console.log(lon);
-
+            //console.log(lat);
+            //console.log(lon);
+            //// just below here we display the current conditions for the city the user searched right now
             $("#currentTemp").text(temperature + " F");
             $("#currentCity").text(city + " (" + momdate + ")");
             $("#currentCity").append("<img src='https://openweathermap.org/img/w/" + theAnswer.weather[0].icon + ".png' alt='" + theAnswer.weather[0].main + "' />")
@@ -123,7 +128,7 @@ $(document).ready(function () {
 
             queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=hourly&appid=" + myApiKey;
 
-            ///alert(queryString2);
+
 
 
             $.ajax({
@@ -138,6 +143,8 @@ $(document).ready(function () {
                 console.log(test);
                 console.log(theAnswer2);
                 $("#currentUv").text(uvi);
+
+                //// right below is where we adjust the css dynamically using jquery to light green orange or red based on uv value
                 if (uvi <= 2) {
                     $("#currentUv").css("background-color", "lightgreen");
                 }
@@ -148,7 +155,7 @@ $(document).ready(function () {
                 if (uvi > 5) {
                     $("#currentUv").css("background-color", "red");
                 }
-                //get humidity for five day forcast -- also need to start at 1, o would be today
+                //get humidity for five day forcast -- 
                 var i = 0;
 
                 while (i < 5) {
@@ -179,7 +186,7 @@ $(document).ready(function () {
                 }
 
 
-                ///// write icon to variable for specific day
+                ///// write icon code to variable for specific day this is the icon to go with the five day forcast to append to a card later  -- same format as earler iconCode1 is day after today iconCode2 is two days after today ect.... 
                 var iconCode1 = theAnswer2.daily[1].weather[0].icon;
                 var iconCode2 = theAnswer2.daily[2].weather[0].icon;
                 var iconCode3 = theAnswer2.daily[3].weather[0].icon;
@@ -200,7 +207,7 @@ $(document).ready(function () {
 
 
 
-                //    }
+
 
             });
 
