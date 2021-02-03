@@ -11,7 +11,7 @@ The user story can be reviewed below the screen shot of the application and link
 
 [Deployed Application](https://chorvick.github.io/WeatherDashboard/index.html)
 
-(/assets/screenshot/s1.png)
+(https://raw.githubusercontent.com/chorvick/WeatherDashboard/main/assets/screenshot/s1.png)
 
 ## User Story
 
