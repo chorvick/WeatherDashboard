@@ -1,7 +1,7 @@
 # WeatherDashboard
 
 This weather dashboard allows you to search the current weather conditions and five day forcast for any city you like.
-This application was written using the bootstrap framework. Other resources used were javascript and Jquery.
+This application was written using the bootstrap framework. Other resources used were Javascript, Jquery and Moment.Js.
 
 The weather information is pulled from The Open Weather Api.
 

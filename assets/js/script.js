@@ -3,7 +3,10 @@
 var myApiKey = "bfe778d8ee4fe1d07c2fd96feb41c947";
 
 
-////make an array for holding cities previously searched 
+////make an array for holding cities previously searched - the arrays fiveDayh are the next five day forcast of humidity
+/// and fiveDayt will hold the next five days of temperature forcast in impereal units rounded with math floor
+// makeList is used to keep track of previously searched cities and queryString is cleared each time this calls the
+// open weather api
 var cities = [];
 var queryString = ""
 var data
@@ -13,6 +16,7 @@ var fiveDayt = ["1", "2", "3", "4", "5"];
 
 
 /// use moment js to display todays date at top also defined next five days to print to cards for five day forcast
+/// mamdate1 is one day after today momdate2 is two days after today ect....
 var momdate = moment();
 var momdate1 = moment();
 var momdate2 = moment();
@@ -36,6 +40,7 @@ momdate4 = moment().add(4, 'days').format("MMMM Do YYYY");
 
 momdate5 = moment().add(5, 'days').format("MMMM Do YYYY");
 
+///// this puts the date of todays weather and increases the font weight a bit for better readability
 
 var thetime = $("#currentDay").css("font-weight", "400");
 
@@ -53,7 +58,7 @@ thetime3.text(momdate3);
 thetime4.text(momdate4);
 thetime5.text(momdate5);
 
-
+//// this line begins our document ready function for running the application
 $(document).ready(function () {
 
 
@@ -84,7 +89,7 @@ $(document).ready(function () {
         // to do next make buttons for stored cities 
         //$('<button/>').text(storedData);
 
-
+        // ajax was used for all api calls after having issues using fetch.....both calls are below
         queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + txt + "&units=imperial&appid=" + myApiKey;
 
         ///// note theAnswer1 is first api call theAnswer2 is second api call first api call gets weather by city name and information
@@ -124,7 +129,7 @@ $(document).ready(function () {
 
             // format for ONE CALL WEATHER API CAN GET 5 DAY AND UV
             /// used this website for value/color of uv https://www.epa.gov/sunsafety/uv-index-scale-0
-
+            //// did not use color purple from govt website since outside paramaters for this assignment
 
             queryString2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=hourly&appid=" + myApiKey;
 
@@ -138,10 +143,10 @@ $(document).ready(function () {
                 console.log("second api info is " + theAnswer2);
                 var uvi = theAnswer2.current.uvi;
                 //uvi = 9;  used to test uvi color 
-                console.log(uvi);
+                console.log(uvi);  //// prints uv to console for testing during coding up
                 var test = theAnswer2.current.sunrise;
                 console.log(test);
-                console.log(theAnswer2);
+                console.log(theAnswer2);  ////below add uvi value to weather for selected city
                 $("#currentUv").text(uvi);
 
                 //// right below is where we adjust the css dynamically using jquery to light green orange or red based on uv value
