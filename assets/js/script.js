@@ -59,13 +59,19 @@ $(document).ready(function () {
     /// store cities searched to an array --  problem is it is storing blanks also
     $("#btn").click(function () {
         var txt = $("#form1").val();
-        //console.log(txt);
+
         cities.push(txt);
         numCities = cities.length
         localStorage.setItem(numCities, JSON.stringify(txt));
         console.log(cities);
 
+        //// remove any previous icon from five day forcast if there is one
 
+        $("#day1 img:last-child").remove();
+        $("#day2 img:last-child").remove();
+        $("#day3 img:last-child").remove();
+        $("#day4 img:last-child").remove();
+        $("#day5 img:last-child").remove();
 
         var storedData = JSON.parse(window.localStorage.getItem(cities.length))
         console.log(storedData);
@@ -172,21 +178,25 @@ $(document).ready(function () {
                     $("#temp5").text(fiveDayt[4] + " F");
                 }
 
-                // console.log(theAnswer2.daily[1].weather[0].icon);
-                //        for (k = 1; ; k < 6; k++)
-                //  {
-                var iconCode = (theAnswer2.daily[1].weather[0].icon);
 
-                ///var test = "<img src='http://openweathermap.org/img/wn/" + theAnswer2.daily[1].weather[0].icon + "@2x.png"
-                $("#day1").append(`<img src='http://openweathermap.org/img/wn/${iconCode}@2x.png' />`);
-                /// http://openweathermap.org/img/wn/10d@2x.png
-
-                /// http://openweathermap.org/img/wn/10d@2x.png
-
-                //    $("#day2").append(`<img src='http://openweathermap.org/img/wn/${iconCode}@2x.png' />`);
+                ///// write icon to variable for specific day
+                var iconCode1 = theAnswer2.daily[1].weather[0].icon;
+                var iconCode2 = theAnswer2.daily[2].weather[0].icon;
+                var iconCode3 = theAnswer2.daily[3].weather[0].icon;
+                var iconCode4 = theAnswer2.daily[4].weather[0].icon;
+                var iconCode5 = theAnswer2.daily[5].weather[0].icon;
 
 
 
+                /// append icon to each card for five day 
+
+
+
+                $("#day1").append(`<img src='http://openweathermap.org/img/wn/${iconCode1}@2x.png' />`);
+                $("#day2").append(`<img src='http://openweathermap.org/img/wn/${iconCode2}@2x.png' />`);
+                $("#day3").append(`<img src='http://openweathermap.org/img/wn/${iconCode3}@2x.png' />`);
+                $("#day4").append(`<img src='http://openweathermap.org/img/wn/${iconCode4}@2x.png' />`);
+                $("#day5").append(`<img src='http://openweathermap.org/img/wn/${iconCode5}@2x.png' />`);
 
 
 
