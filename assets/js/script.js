@@ -167,26 +167,30 @@ $(document).ready(function () {
                     j++;
                     $("#temp1").text(fiveDayt[0] + " F");
                     $("#temp2").text(fiveDayt[1] + " F");
-                    $("#temp3").text(fiveDayt[2] + "F");
+                    $("#temp3").text(fiveDayt[2] + " F");
                     $("#temp4").text(fiveDayt[3] + " F");
                     $("#temp5").text(fiveDayt[4] + " F");
                 }
 
-                console.log(theAnswer2.daily[1].weather[0].icon);
+                // console.log(theAnswer2.daily[1].weather[0].icon);
+                //        for (k = 1; ; k < 6; k++)
+                //  {
                 var iconCode = (theAnswer2.daily[1].weather[0].icon);
 
                 ///var test = "<img src='http://openweathermap.org/img/wn/" + theAnswer2.daily[1].weather[0].icon + "@2x.png"
-                $("#day1").append("<img src='http://openweathermap.org/img/wn/" + iconCode + "@2x.png");
-
-                $("#day2").append(" hi there ");
-
-                $("#day3").append(" icon goes here ");
+                $("#day1").append(`<img src='http://openweathermap.org/img/wn/${iconCode}@2x.png' />`);
                 /// http://openweathermap.org/img/wn/10d@2x.png
 
                 /// http://openweathermap.org/img/wn/10d@2x.png
 
+                //    $("#day2").append(`<img src='http://openweathermap.org/img/wn/${iconCode}@2x.png' />`);
 
 
+
+
+
+
+                //    }
 
             });
 
