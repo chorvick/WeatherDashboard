@@ -171,6 +171,23 @@ $(document).ready(function () {
                     $("#temp4").text(fiveDayt[3] + " F");
                     $("#temp5").text(fiveDayt[4] + " F");
                 }
+
+                console.log(theAnswer2.daily[1].weather[0].icon);
+                var iconCode = (theAnswer2.daily[1].weather[0].icon);
+
+                ///var test = "<img src='http://openweathermap.org/img/wn/" + theAnswer2.daily[1].weather[0].icon + "@2x.png"
+                $("#day1").append("<img src='http://openweathermap.org/img/wn/" + iconCode + "@2x.png");
+
+                $("#day2").append(" hi there ");
+
+                $("#day3").append(" icon goes here ");
+                /// http://openweathermap.org/img/wn/10d@2x.png
+
+                /// http://openweathermap.org/img/wn/10d@2x.png
+
+
+
+
             });
 
 
