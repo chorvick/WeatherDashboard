@@ -5,11 +5,13 @@ This application was written using the bootstrap framework. Other resources used
 
 The weather information is pulled from The Open Weather Api.
 
-[OpenWeather API](https://openweathermap.org/api) 
+[OpenWeather API](https://openweathermap.org/api)
 
 The user story can be reviewed below the screen shot of the application and link to try it out.
 
+[Deployed Application](https://chorvick.github.io/WeatherDashboard/index.html)
 
+(/assets/screenshot/s1.png)
 
 ## User Story
 
